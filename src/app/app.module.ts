@@ -9,10 +9,12 @@ import { AppComponent } from "./app.component";
 import { RegisterComponent } from "./register/register.component";
 import { FormsModule } from "@angular/forms";
 import { LoginComponent } from "./login/login.component";
+import { CookieService } from "ngx-cookie-service";
+import { HomeComponent } from './home/home.component';
 @NgModule({
-  declarations: [AppComponent,LoginComponent, RegisterComponent],
+  declarations: [AppComponent,LoginComponent, RegisterComponent, HomeComponent],
   imports: [BrowserModule, routing,FormsModule,HttpClientModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

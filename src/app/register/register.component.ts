@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { UsersService } from "../users/users.service";
 
 @Component({
@@ -12,12 +13,18 @@ export class RegisterComponent {
   confirmPassword!: string;
   passwordError!: boolean;
 
-  constructor(public userService: UsersService) {}
+  constructor(private userService: UsersService,private router: Router) {}
 
   register() {
     const user = { email: this.email, password: this.password };
     this.userService.register(user).subscribe(data => {
-      console.log(data);
+      this.userService.setToken(data.token);
+      this.router.navigateByUrl('/');
+
+    },
+    error => {
+      console.log(error);
     });
   }
+
 }
